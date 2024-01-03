@@ -126,4 +126,4 @@ The `request.olds` objects are different between `update-4.json` and `update-6.j
 <                 ],
 ```
 
-In particular, the `content` field of `olds` in the second update has the new value of `runbook.yml`, even though 
+In particular, the `content` field of `olds` in **the second update has the new value of `runbook.yml`**, even though no successful update was performed*. This seems really weird, and is the likely cause for the inconsistent behavior.
