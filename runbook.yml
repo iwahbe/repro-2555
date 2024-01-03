@@ -1,0 +1,33 @@
+description: |
+  *Some description*
+
+schemaVersion: '0.3'
+assumeRole: '\{{ AutomationAssumeRole }}'
+parameters:
+  AutomationAssumeRole:
+    type: String
+    default: '{{ assumeRoleArn }}'
+    description: (Required) The ARN of the role that allows automation to perform the actions on your behalf.
+  InstanceId:
+    type: String
+    description: (Required) AMI Source EC2 instance ID
+  Region:
+    type: String
+    description: AWS Region
+    default: 'us-west-2'
+mainSteps:
+  ##############################################################################
+  - name: 'Wait_for_SSM_Agent'
+    description: SSM Agent Needs to be Ready
+    action: aws:waitForAwsResourceProperty
+    timeoutSeconds: 3600
+    inputs:
+      Service: ssm
+      Api: DescribeInstanceInformation
+      InstanceInformationFilterList:
+        - key: InstanceIds
+          valueSet: ['\{{ InstanceId }}']
+      PropertySelector: '$..PingStatus'
+      DesiredValues:
+        - Online
+    isCritical: 'true'

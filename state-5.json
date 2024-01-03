@@ -1,0 +1,287 @@
+{
+    "version": 3,
+    "deployment": {
+        "manifest": {
+            "time": "2024-01-03T17:14:08.325921+01:00",
+            "magic": "3e78a774166cd8e6a27bc45a0af46b0826cd13afc552a1a1c9cf34f0df581147",
+            "version": "3.94.3-dev.0"
+        },
+        "secrets_providers": {
+            "type": "service",
+            "state": {
+                "url": "https://api.pulumi.com",
+                "owner": "pulumi",
+                "project": "ts",
+                "stack": "dev"
+            }
+        },
+        "resources": [
+            {
+                "urn": "urn:pulumi:dev::ts::pulumi:pulumi:Stack::ts-dev",
+                "custom": false,
+                "type": "pulumi:pulumi:Stack",
+                "outputs": {
+                    "runbook": {}
+                },
+                "created": "2024-01-03T16:12:55.212795Z",
+                "modified": "2024-01-03T16:12:55.212795Z"
+            },
+            {
+                "urn": "urn:pulumi:dev::ts::pulumi:providers:aws::default_5_43_0",
+                "custom": true,
+                "id": "5915c9f4-f47a-4b3f-9ec3-bb481539581c",
+                "type": "pulumi:providers:aws",
+                "inputs": {
+                    "region": "us-west-2",
+                    "version": "5.43.0"
+                },
+                "outputs": {
+                    "region": "us-west-2",
+                    "version": "5.43.0"
+                },
+                "created": "2024-01-03T16:12:56.930702Z",
+                "modified": "2024-01-03T16:12:56.930702Z"
+            },
+            {
+                "urn": "urn:pulumi:dev::ts::aws:iam/role:Role::ssmAutomation-role",
+                "custom": true,
+                "id": "ssmAutomation-role",
+                "type": "aws:iam/role:Role",
+                "inputs": {
+                    "__defaults": [
+                        "forceDetachPolicies",
+                        "maxSessionDuration",
+                        "path"
+                    ],
+                    "assumeRolePolicy": "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Sid\":\"\",\"Principal\":{\"Service\":\"ssm.amazonaws.com\"}}]}",
+                    "forceDetachPolicies": false,
+                    "maxSessionDuration": 3600,
+                    "name": "ssmAutomation-role",
+                    "path": "/"
+                },
+                "outputs": {
+                    "arn": "arn:aws:iam::616138583583:role/ssmAutomation-role",
+                    "assumeRolePolicy": "{\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"ssm.amazonaws.com\"},\"Sid\":\"\"}],\"Version\":\"2012-10-17\"}",
+                    "createDate": "2024-01-03T16:12:59Z",
+                    "description": "",
+                    "forceDetachPolicies": false,
+                    "id": "ssmAutomation-role",
+                    "inlinePolicies": [],
+                    "managedPolicyArns": [],
+                    "maxSessionDuration": 3600,
+                    "name": "ssmAutomation-role",
+                    "namePrefix": "",
+                    "path": "/",
+                    "roleLastUseds": [
+                        {
+                            "lastUsedDate": "",
+                            "region": ""
+                        }
+                    ],
+                    "tags": {},
+                    "tagsAll": {},
+                    "uniqueId": "AROAY65FYVYP6SC3KUZG3"
+                },
+                "parent": "urn:pulumi:dev::ts::pulumi:pulumi:Stack::ts-dev",
+                "provider": "urn:pulumi:dev::ts::pulumi:providers:aws::default_5_43_0::5915c9f4-f47a-4b3f-9ec3-bb481539581c",
+                "propertyDependencies": {
+                    "assumeRolePolicy": null,
+                    "name": null
+                },
+                "created": "2024-01-03T16:13:00.834287Z",
+                "modified": "2024-01-03T16:13:00.834287Z"
+            },
+            {
+                "urn": "urn:pulumi:dev::ts::aws:ssm/parameter:Parameter::newRelicWinServiceConfig",
+                "custom": true,
+                "id": "/platform/newRelicWinServiceConfig",
+                "type": "aws:ssm/parameter:Parameter",
+                "inputs": {
+                    "__defaults": [
+                        "tier"
+                    ],
+                    "name": "/platform/newRelicWinServiceConfig",
+                    "tier": "Standard",
+                    "type": "String",
+                    "value": {
+                        "4dabf18193072939515e22adb298388d": "1b47061264138c4ac30d75fd1eb44270",
+                        "ciphertext": "AAABAAYScCU8UAPDH4VDLkzm1iH1+mHwkSYb0atFv9tgbc/jStTrqbSsftrZ6C6XD/YaGzaZOrwGB57k4JHihDGyNd5J"
+                    }
+                },
+                "outputs": {
+                    "allowedPattern": "",
+                    "arn": "arn:aws:ssm:us-west-2:616138583583:parameter/platform/newRelicWinServiceConfig",
+                    "dataType": "text",
+                    "description": "",
+                    "id": "/platform/newRelicWinServiceConfig",
+                    "keyId": "",
+                    "name": "/platform/newRelicWinServiceConfig",
+                    "tags": {},
+                    "tagsAll": {},
+                    "tier": "Standard",
+                    "type": "String",
+                    "value": {
+                        "4dabf18193072939515e22adb298388d": "1b47061264138c4ac30d75fd1eb44270",
+                        "ciphertext": "AAABADa752XT7E5IFJduvr7jVyNft2kaaO7YiZxhhpzI80RSiTeMZQcOWI5TRBMuAbaflb8OFsEwWggjVi9jWFXLM1Ad"
+                    },
+                    "version": 1
+                },
+                "parent": "urn:pulumi:dev::ts::pulumi:pulumi:Stack::ts-dev",
+                "provider": "urn:pulumi:dev::ts::pulumi:providers:aws::default_5_43_0::5915c9f4-f47a-4b3f-9ec3-bb481539581c",
+                "propertyDependencies": {
+                    "name": null,
+                    "type": null,
+                    "value": null
+                },
+                "additionalSecretOutputs": [
+                    "value"
+                ],
+                "created": "2024-01-03T16:13:01.840556Z",
+                "modified": "2024-01-03T16:13:01.840556Z"
+            },
+            {
+                "urn": "urn:pulumi:dev::ts::aws:ssm/parameter:Parameter::newRelicWinEventConfig",
+                "custom": true,
+                "id": "/platform/newRelicWinEventConfig",
+                "type": "aws:ssm/parameter:Parameter",
+                "inputs": {
+                    "__defaults": [
+                        "tier"
+                    ],
+                    "name": "/platform/newRelicWinEventConfig",
+                    "tier": "Standard",
+                    "type": "String",
+                    "value": {
+                        "4dabf18193072939515e22adb298388d": "1b47061264138c4ac30d75fd1eb44270",
+                        "ciphertext": "AAABANY/bsciMYrSTLhaEDCwxOfMUEv7BB00PqEkjNuEqm0d8YGqyU1Yb48r0qfahBFhHtF4vnlfKusu1QMjpwjKCg=="
+                    }
+                },
+                "outputs": {
+                    "allowedPattern": "",
+                    "arn": "arn:aws:ssm:us-west-2:616138583583:parameter/platform/newRelicWinEventConfig",
+                    "dataType": "text",
+                    "description": "",
+                    "id": "/platform/newRelicWinEventConfig",
+                    "keyId": "",
+                    "name": "/platform/newRelicWinEventConfig",
+                    "tags": {},
+                    "tagsAll": {},
+                    "tier": "Standard",
+                    "type": "String",
+                    "value": {
+                        "4dabf18193072939515e22adb298388d": "1b47061264138c4ac30d75fd1eb44270",
+                        "ciphertext": "AAABAG5m4OHsTkg5YbkswumN1vG3heQ/i5Q2lzbwEXOExZJW/nu1ZmZXm57B2iZ77XfA0AOZed6JjvxYTomsMlsmdw=="
+                    },
+                    "version": 1
+                },
+                "parent": "urn:pulumi:dev::ts::pulumi:pulumi:Stack::ts-dev",
+                "provider": "urn:pulumi:dev::ts::pulumi:providers:aws::default_5_43_0::5915c9f4-f47a-4b3f-9ec3-bb481539581c",
+                "propertyDependencies": {
+                    "name": null,
+                    "type": null,
+                    "value": null
+                },
+                "additionalSecretOutputs": [
+                    "value"
+                ],
+                "created": "2024-01-03T16:13:01.884433Z",
+                "modified": "2024-01-03T16:13:01.884433Z"
+            },
+            {
+                "urn": "urn:pulumi:dev::ts::aws:ssm/document:Document::nodeBuildRunbook-doc",
+                "custom": true,
+                "id": "nodeBuildRunbook",
+                "type": "aws:ssm/document:Document",
+                "inputs": {
+                    "__defaults": [],
+                    "content": "description: |\n  *Some description*\n\nschemaVersion: '0.3'\nassumeRole: '{{ AutomationAssumeRole }}'\nparameters:\n  AutomationAssumeRole:\n    type: String\n    default: 'arn:aws:iam::616138583583:role/ssmAutomation-role'\n    description: (Required) The ARN of the role that allows automation to perform the actions on your behalf.\n  InstanceId:\n    type: String\n    description: (Required) AMI Source EC2 instance ID\n  Region:\n    type: String\n    description: AWS Region\n    default: 'us-west-2'\nmainSteps:\n  ##############################################################################\n  - name: 'Wait_for_SSM_Agent'\n    description: SSM Agent Needs to be Ready\n    action: aws:waitForAwsResourceProperty\n    timeoutSeconds: 3600\n    inputs:\n      Service: ssm\n      Api: DescribeInstanceInformation\n      InstanceInformationFilterList:\n        - key: InstanceIds\n          valueSet: ['{{ InstanceId }}']\n      PropertySelector: '$..PingStatus'\n      DesiredValues:\n        - Online\n    isCritical: 'true'\n",
+                    "documentFormat": "YAML",
+                    "documentType": "Automation",
+                    "name": "nodeBuildRunbook"
+                },
+                "outputs": {
+                    "arn": "arn:aws:ssm:us-west-2:616138583583:document/nodeBuildRunbook",
+                    "attachmentsSources": [],
+                    "content": "description: |\n  *Some description or another*\n\nschemaVersion: '0.3'\nassumeRole: '{{ AutomationAssumeRole }}'\nparameters:\n  AutomationAssumeRole:\n    type: String\n    default: 'arn:aws:iam::616138583583:role/ssmAutomation-role'\n    description: (Required) The ARN of the role that allows automation to perform the actions on your behalf.\n  InstanceId:\n    type: String\n    description: (Required) AMI Source EC2 instance ID\n  Region:\n    type: String\n    description: AWS Region\n    default: 'us-west-2'\nmainSteps:\n  ##############################################################################\n  - name: 'Wait_for_SSM_Agent'\n    description: SSM Agent Needs to be Ready\n    action: aws:waitForAwsResourceProperty\n    timeoutSeconds: 3600\n    inputs:\n      Service: ssm\n      Api: DescribeInstanceInformation\n      InstanceInformationFilterList:\n        - key: InstanceIds\n          valueSet: ['{{ InstanceId }}']\n      PropertySelector: '$..PingStatus'\n      DesiredValues:\n        - Online\n    isCritical: 'true'\n",
+                    "createdDate": "2024-01-03T16:13:04Z",
+                    "description": "*Some description*\n",
+                    "documentFormat": "YAML",
+                    "documentType": "Automation",
+                    "hashType": "Sha256",
+                    "id": "nodeBuildRunbook",
+                    "name": "nodeBuildRunbook",
+                    "owner": "616138583583",
+                    "permissions": {},
+                    "platformTypes": [
+                        "Windows",
+                        "Linux",
+                        "MacOS"
+                    ],
+                    "schemaVersion": "0.3",
+                    "status": "Active",
+                    "tags": {},
+                    "tagsAll": {},
+                    "targetType": "",
+                    "versionName": ""
+                },
+                "parent": "urn:pulumi:dev::ts::pulumi:pulumi:Stack::ts-dev",
+                "dependencies": [
+                    "urn:pulumi:dev::ts::aws:iam/role:Role::ssmAutomation-role",
+                    "urn:pulumi:dev::ts::aws:ssm/parameter:Parameter::newRelicWinEventConfig",
+                    "urn:pulumi:dev::ts::aws:ssm/parameter:Parameter::newRelicWinServiceConfig"
+                ],
+                "initErrors": [
+                    "updating urn:pulumi:dev::ts::aws:ssm/document:Document::nodeBuildRunbook-doc: 1 error occurred:\n\t* updating SSM Document (nodeBuildRunbook): ValidationException: 1 validation error detected: Value at 'documentVersion' failed to satisfy constraint: Member must satisfy regular expression pattern: ([$]LATEST|[$]DEFAULT|[$]APPROVED|[$]PENDING_REVIEW|^[1-9][0-9]*$)\n\tstatus code: 400, request id: 78e5bff7-d246-4fa5-9d5d-a42297494eea\n\n"
+                ],
+                "provider": "urn:pulumi:dev::ts::pulumi:providers:aws::default_5_43_0::5915c9f4-f47a-4b3f-9ec3-bb481539581c",
+                "propertyDependencies": {
+                    "content": [
+                        "urn:pulumi:dev::ts::aws:iam/role:Role::ssmAutomation-role",
+                        "urn:pulumi:dev::ts::aws:ssm/parameter:Parameter::newRelicWinEventConfig",
+                        "urn:pulumi:dev::ts::aws:ssm/parameter:Parameter::newRelicWinServiceConfig"
+                    ],
+                    "documentFormat": null,
+                    "documentType": null,
+                    "name": null
+                },
+                "created": "2024-01-03T16:13:05.837055Z",
+                "modified": "2024-01-03T16:14:08.325503Z"
+            },
+            {
+                "urn": "urn:pulumi:dev::ts::aws:iam/rolePolicy:RolePolicy::eventBridge-nodeBuildRunbook-policy",
+                "custom": true,
+                "id": "ssmAutomation-role:eventBridge-nodeBuildRunbook-policy",
+                "type": "aws:iam/rolePolicy:RolePolicy",
+                "inputs": {
+                    "__defaults": [],
+                    "name": "eventBridge-nodeBuildRunbook-policy",
+                    "policy": "{\"Statement\":[{\"Action\":[\"ssm:StartAutomationExecution\"],\"Effect\":\"Allow\",\"Resource\":\"arn:aws:ssm:us-west-2:616138583583:automation-definition/nodeBuildRunbook:$DEFAULT\"}],\"Version\":\"2012-10-17\"}",
+                    "role": "ssmAutomation-role"
+                },
+                "outputs": {
+                    "id": "ssmAutomation-role:eventBridge-nodeBuildRunbook-policy",
+                    "name": "eventBridge-nodeBuildRunbook-policy",
+                    "policy": "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Action\":[\"ssm:StartAutomationExecution\"],\"Effect\":\"Allow\",\"Resource\":\"arn:aws:ssm:us-west-2:616138583583:automation-definition/nodeBuildRunbook:$DEFAULT\"}]}",
+                    "role": "ssmAutomation-role"
+                },
+                "parent": "urn:pulumi:dev::ts::pulumi:pulumi:Stack::ts-dev",
+                "dependencies": [
+                    "urn:pulumi:dev::ts::aws:ssm/document:Document::nodeBuildRunbook-doc",
+                    "urn:pulumi:dev::ts::aws:iam/role:Role::ssmAutomation-role"
+                ],
+                "provider": "urn:pulumi:dev::ts::pulumi:providers:aws::default_5_43_0::5915c9f4-f47a-4b3f-9ec3-bb481539581c",
+                "propertyDependencies": {
+                    "name": null,
+                    "policy": [
+                        "urn:pulumi:dev::ts::aws:ssm/document:Document::nodeBuildRunbook-doc"
+                    ],
+                    "role": [
+                        "urn:pulumi:dev::ts::aws:iam/role:Role::ssmAutomation-role"
+                    ]
+                },
+                "created": "2024-01-03T16:13:07.052343Z",
+                "modified": "2024-01-03T16:13:07.052343Z"
+            }
+        ]
+    }
+}
