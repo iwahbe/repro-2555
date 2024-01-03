@@ -87,3 +87,43 @@ Duration: 6s
 7. Record state: `pulumi stack export > state-7.json`
 
 ## Observations
+
+The `request.olds` objects are different between `update-4.json` and `update-6.json`:
+
+```diff
+6c6,7
+<                 "content": "description: |\n  *Some description*\n\nschemaVersion: '0.3'\nassumeRole: '{{ AutomationAssumeRole }}'\nparameters:\n  AutomationAssumeRole:\n    type: String\n    default: 'arn:aws:iam::616138583583:role/ssmAutomation-role'\n    description: (Required) The ARN of the role that allows automation to perform the actions on your behalf.\n  InstanceId:\n    type: String\n    description: (Required) AMI Source EC2 instance ID\n  Region:\n    type: String\n    description: AWS Region\n    default: 'us-west-2'\nmainSteps:\n  ##############################################################################\n  - name: 'Wait_for_SSM_Agent'\n    description: SSM Agent Needs to be Ready\n    action: aws:waitForAwsResourceProperty\n    timeoutSeconds: 3600\n    inputs:\n      Service: ssm\n      Api: DescribeInstanceInformation\n      InstanceInformationFilterList:\n        - key: InstanceIds\n          valueSet: ['{{ InstanceId }}']\n      PropertySelector: '$..PingStatus'\n      DesiredValues:\n        - Online\n    isCritical: 'true'\n",
+---
+>                 "attachmentsSources": [],
+>                 "content": "description: |\n  *Some description or another*\n\nschemaVersion: '0.3'\nassumeRole: '{{ AutomationAssumeRole }}'\nparameters:\n  AutomationAssumeRole:\n    type: String\n    default: 'arn:aws:iam::616138583583:role/ssmAutomation-role'\n    description: (Required) The ARN of the role that allows automation to perform the actions on your behalf.\n  InstanceId:\n    type: String\n    description: (Required) AMI Source EC2 instance ID\n  Region:\n    type: String\n    description: AWS Region\n    default: 'us-west-2'\nmainSteps:\n  ##############################################################################\n  - name: 'Wait_for_SSM_Agent'\n    description: SSM Agent Needs to be Ready\n    action: aws:waitForAwsResourceProperty\n    timeoutSeconds: 3600\n    inputs:\n      Service: ssm\n      Api: DescribeInstanceInformation\n      InstanceInformationFilterList:\n        - key: InstanceIds\n          valueSet: ['{{ InstanceId }}']\n      PropertySelector: '$..PingStatus'\n      DesiredValues:\n        - Online\n    isCritical: 'true'\n",
+8d8
+<                 "defaultVersion": "1",
+12,13d11
+<                 "documentVersion": "1",
+<                 "hash": "ed5916d6e8dcf277f139e50a6e07bc4b340e12681176dd31d4787cec5f22382d",
+16d13
+<                 "latestVersion": "1",
+19,38d15
+<                 "parameters": [
+<                         {
+<                                 "defaultValue": "arn:aws:iam::616138583583:role/ssmAutomation-role",
+<                                 "description": "(Required) The ARN of the role that allows automation to perform the actions on your behalf.",
+<                                 "name": "AutomationAssumeRole",
+<                                 "type": "String"
+<                         },
+<                         {
+<                                 "defaultValue": "",
+<                                 "description": "(Required) AMI Source EC2 instance ID",
+<                                 "name": "InstanceId",
+<                                 "type": "String"
+<                         },
+<                         {
+<                                 "defaultValue": "us-west-2",
+<                                 "description": "AWS Region",
+<                                 "name": "Region",
+<                                 "type": "String"
+<                         }
+<                 ],
+```
+
+In particular, the `content` field of `olds` in the second update has the new value of `runbook.yml`, even though 
